@@ -1,16 +1,26 @@
-<h1>All statuses</h1>
+<div class="page-header">
+ <h1>All of the Statuses</h1>
+</div>
 
-<table>
 <% @statuses.each do |status| %>
-  <tr>
-    <td><%= status.name %></td>
-    <td><%= status.content %></td>
-    <td><%= link_to 'Show', status %></td>
-    <td><%= link_to 'Edit', edit_status_path(status) %></td>
-    <td><%= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<div class="status well">
+  <div class="btn-group pull-right">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    Actions <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><%= link_to 'Edit', edit_status_path(status) %></li>
+    <li class="divider"></li>
+    <li><%= link_to 'Delete', status, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+  </ul>
+ </div>
+
+ <strong><%= status.name %></strong>
+ <p><%= status.content %></p>
+ <em><%= link_to time_ago_in_words(status.created_at) + " ago", status %></em>
+</div>
 <% end %>
-</table>
+
 
 <br />
 
