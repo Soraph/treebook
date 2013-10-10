@@ -1,4 +1,4 @@
 treebook
 ========
 
-Development playground from the treehouse corse.
+Development playground from the treehouse course.
