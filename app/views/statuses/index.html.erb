@@ -18,7 +18,7 @@
   </ul>
  </div>
 
- <strong>Name</strong>
+ <strong><%= status.user.full_name %></strong>
  <p><%= status.content %></p>
  <em><%= link_to time_ago_in_words(status.created_at) + " ago", status %></em>
 </div>
