@@ -2,6 +2,8 @@
  <h1>All of the Statuses</h1>
 </div>
 
+<%= link_to 'Post a new Status', new_status_path, class: "someclass" %>
+
 <% @statuses.each do |status| %>
 <div class="status well">
   <div class="btn-group pull-right">
@@ -20,8 +22,3 @@
  <em><%= link_to time_ago_in_words(status.created_at) + " ago", status %></em>
 </div>
 <% end %>
-
-
-<br />
-
-<%= link_to 'New Status', new_status_path %>
