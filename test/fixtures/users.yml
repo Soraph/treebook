@@ -10,3 +10,10 @@ profiler:
   email: "profiler@email.com"
   profile_name: "Profiler"
   encrypted_password: "$2a$10$8uCZ9wCTsKoqb0aIgpssne4qtchcpqhepdU5WylZwh4GBAkgFWEYe"
+
+newuser:
+  first_name: "New"
+  last_name: "User"
+  email: "newuser@email.com"
+  profile_name: "Newuser"
+  encrypted_password: "$2a$10$8uCZ9wDTsKiqb0aIgpssne4qtchcpqhepdU5WylZwh4GBAkgFWEYe"

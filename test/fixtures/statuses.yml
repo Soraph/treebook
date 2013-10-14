@@ -7,3 +7,7 @@ one:
 two:
   content: MyText
   user: profiler
+
+three:
+  content: "My Text"
+  user: newuser
