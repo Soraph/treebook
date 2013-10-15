@@ -6,19 +6,25 @@
 
 <% @statuses.each do |status| %>
 <div class="status well">
-  <div class="btn-group pull-right">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-    <span class="glyphicon glyphicon-cog"></span> <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><%= link_to 'Edit', edit_status_path(status) %></li>
-    <li class="divider"></li>
-    <li><%= link_to 'Delete', status, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-  </ul>
+ <div class="row">
+  <div class="col-md-1">
+     <%= image_tag status.user.gravatar_url %>
+  </div>
+  <div class="col-md-11">
+   <div class="btn-group pull-right">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+     <span class="glyphicon glyphicon-cog"></span> <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+     <li><%= link_to 'Edit', edit_status_path(status) %></li>
+     <li class="divider"></li>
+     <li><%= link_to 'Delete', status, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+    </ul>
+   </div>
+   <strong><%= status.user.full_name %></strong>
+   <p><%= status.content %></p>
+   <em><%= link_to time_ago_in_words(status.created_at) + " ago", status %></em>
+  </div>
  </div>
-
- <strong><%= status.user.full_name %></strong>
- <p><%= status.content %></p>
- <em><%= link_to time_ago_in_words(status.created_at) + " ago", status %></em>
 </div>
 <% end %>
