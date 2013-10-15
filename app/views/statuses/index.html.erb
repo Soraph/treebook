@@ -21,7 +21,7 @@
      <li><%= link_to 'Delete', status, method: :delete, data: { confirm: 'Are you sure?' } %></li>
     </ul>
    </div>
-   <strong><%= status.user.full_name %></strong>
+   <strong><%= link_to status.user.full_name, profile_page_path(status.user.profile_name) %></strong>
    <p><%= status.content %></p>
    <em><%= link_to time_ago_in_words(status.created_at) + " ago", status %></em>
   </div>
