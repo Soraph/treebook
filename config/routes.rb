@@ -16,7 +16,7 @@ Treebook::Application.routes.draw do
 
   root :to => "statuses#index"
 
-  get '/profile/:id', to: 'profiles#show'
+  get '/profile/:id', to: 'profiles#show', as: :profile_page
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
