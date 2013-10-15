@@ -32,7 +32,7 @@ class StatusesControllerTest < ActionController::TestCase
   test "should create status when logged in" do
     sign_in users(:profiler)
     assert_difference('Status.count') do
-      post :create, status: { content: @status.content }
+      post :create, status: { content: @status.content, user_id: users(:profiler).id }
     end
 
     assert_redirected_to status_path(assigns(:status))
@@ -67,7 +67,15 @@ class StatusesControllerTest < ActionController::TestCase
     assert_redirected_to status_path(assigns(:status))
   end
 
-  test "should destroy status" do
+  test "should be logged in to destroy a staus" do
+    delete :destroy, id: @status
+
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
+  end
+
+  test "should destroy status if logged in" do
+    sign_in users(:profiler)
     assert_difference('Status.count', -1) do
       delete :destroy, id: @status
     end
