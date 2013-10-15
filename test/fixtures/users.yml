@@ -17,3 +17,10 @@ newuser:
   email: "newuser@email.com"
   profile_name: "Newuser"
   encrypted_password: "$2a$10$8uCZ9wDTsKiqb0aIgpssne4qtchcpqhepdU5WylZwh4GBAkgFWEYe"
+
+moreuser:
+  first_name: "More"
+  last_name: "User"
+  email: "moreuser@email.com"
+  profile_name: "Moreuser"
+  encrypted_password: "$2b$10$8fCZ9wGTsKiqb0aIgpssne4qtchcpqhepdU5WylZwh4GBAkgFWEYe"
