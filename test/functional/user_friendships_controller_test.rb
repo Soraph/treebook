@@ -101,7 +101,7 @@ class UserFriendshipsControllerTest < ActionController::TestCase
         end
 
         should "create a friendship" do
-          assert users(:profiler).friends.include?(users(:newuser))
+          assert users(:profiler).pending_friends.include?(users(:newuser))
         end
 
         should "redirect to the profile page of the friend" do
