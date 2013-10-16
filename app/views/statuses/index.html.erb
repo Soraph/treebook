@@ -8,7 +8,7 @@
 <div class="status well">
  <div class="row">
   <div class="col-md-1">
-     <%= image_tag status.user.gravatar_url %>
+     <%= link_to image_tag(status.user.gravatar_url), profile_page_path(status.user) %>
   </div>
   <div class="col-md-11">
    <div class="btn-group pull-right">
@@ -21,7 +21,7 @@
      <li><%= link_to 'Delete', status, method: :delete, data: { confirm: 'Are you sure?' } %></li>
     </ul>
    </div>
-   <strong><%= link_to status.user.full_name, profile_page_path(status.user.profile_name) %></strong>
+   <strong><%= link_to status.user.full_name, profile_page_path(status.user) %></strong>
    <p><%= status.content %></p>
    <em><%= link_to time_ago_in_words(status.created_at) + " ago", status %></em>
   </div>
