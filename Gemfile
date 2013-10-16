@@ -13,6 +13,7 @@ gem 'state_machine', '1.1.2'
 
 group :test do
     gem 'shoulda', '3.1.1'
+    gem 'factory_girl_rails', '4.1.0'
 end
 
 group :development, :test do
