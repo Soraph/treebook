@@ -182,7 +182,9 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 
     context "when logged in" do
       setup do
-        @user_friendship = create(:pending_user_friendship, user: users(:profiler))
+        @friend = create(:user)
+        @user_friendship = create(:pending_user_friendship, user: users(:profiler), friend: @friend)
+        create(:pending_user_friendship, friend: users(:profiler), user: @friend)
         sign_in users(:profiler)
         put :accept, id: @user_friendship
         @user_friendship.reload
@@ -201,37 +203,35 @@ class UserFriendshipsControllerTest < ActionController::TestCase
         assert_equal "You are now friend with #{@user_friendship.friend.full_name}", flash[:success]
       end
     end
+  end
 
-    context "#edit" do
-      context "when not logged in" do
-        should "redirect to the login page" do
-          get :edit, id: 1
-          assert_response :redirect
-        end
+  context "#edit" do
+    context "when not logged in" do
+      should "redirect to the login page" do
+        get :edit, id: 1
+        assert_response :redirect
       end
-
-      context "when logged in" do
-        setup do
-          @user_friendship = create(:pending_user_friendship, user: users(:profiler))
-          sign_in users(:profiler)
-          get :edit, id: @user_friendship
-        end
-
-        should "get edit and return success" do
-          assert_response :success
-        end
-
-        should "assign to user_friendship" do
-          assert assigns(:user_friendship)
-        end
-
-        should "assign to friend" do
-          assert assigns(:friend)
-        end
-
-      end
-
     end
 
+    context "when logged in" do
+      setup do
+        @user_friendship = create(:pending_user_friendship, user: users(:profiler))
+        sign_in users(:profiler)
+        get :edit, id: @user_friendship
+      end
+
+      should "get edit and return success" do
+        assert_response :success
+      end
+
+      should "assign to user_friendship" do
+        assert assigns(:user_friendship)
+      end
+
+      should "assign to friend" do
+        assert assigns(:friend)
+      end
+    end
   end
+
 end
