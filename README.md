@@ -1,4 +1,4 @@
-Treebook
+Treebook ![Build status](https://travis-ci.org/Soraph/treebook.png)
 ========
 
 Development playground from the treehouse course.
