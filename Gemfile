@@ -10,6 +10,7 @@ gem 'rails', '3.2.13'
 gem 'devise', '2.1.2'
 gem 'simple_form'
 gem 'state_machine', '1.1.2'
+gem 'draper', '0.18.0'
 
 group :test do
     gem 'shoulda', '3.1.1'
