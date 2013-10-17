@@ -137,15 +137,15 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
-  devise (= 2.1.2)
-  draper (= 0.18.0)
-  factory_girl_rails (= 4.1.0)
+  devise (~> 2.1.2)
+  draper (~> 0.18.0)
+  factory_girl_rails (~> 4.1.0)
   jquery-rails
   pg
-  rails (= 3.2.13)
+  rails (~> 3.2.13)
   sass-rails (~> 3.2.3)
-  shoulda (= 3.1.1)
+  shoulda (~> 3.1.1)
   simple_form
   sqlite3
-  state_machine (= 1.1.2)
+  state_machine (~> 1.1.2)
   uglifier (>= 1.0.3)

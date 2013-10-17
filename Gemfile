@@ -2,19 +2,19 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 
-gem 'rails', '3.2.13'
+gem 'rails', '~> 3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'devise', '2.1.2'
+gem 'devise', '~> 2.1.2'
 gem 'simple_form'
-gem 'state_machine', '1.1.2'
-gem 'draper', '0.18.0'
+gem 'state_machine', '~> 1.1.2'
+gem 'draper', '~> 0.18.0'
 
 group :test do
-    gem 'shoulda', '3.1.1'
-    gem 'factory_girl_rails', '4.1.0'
+    gem 'shoulda', '~> 3.1.1'
+    gem 'factory_girl_rails', '~> 4.1.0'
 end
 
 group :development, :test do
