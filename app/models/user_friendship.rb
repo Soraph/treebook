@@ -20,6 +20,7 @@ class UserFriendship < ActiveRecord::Base
       friendship2 = create!(user: user2, friend: user1, state: 'requested')
 
       friendship1.send_request_email
+      friendship1
     end
   end
 
