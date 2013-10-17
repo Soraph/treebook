@@ -2,6 +2,10 @@
  <h1>Friends</h1>
 </div>
 
+<% if @user_friendships.empty? %>
+<em>No friends yet!</em>
+<% end %>
+
 <% @user_friendships.each do |friendship| %>
  <% friend = friendship.friend %>
  <div id="<%= dom_id(friendship) %>" class="friend well row">
