@@ -121,6 +121,17 @@ class UserFriendshipTest < ActiveSupport::TestCase
     end
   end
 
+  context "on destroy" do
+    setup do
+      UserFriendship.request users(:profiler), users(:newuser)
+      @friendship1 = users(:profiler).user_friendships.where(friend_id: users(:newuser).id).first
+      @friendship2 = users(:newuser).user_friendships.where(friend_id: users(:profiler).id).first
+    end
 
+    should "destroy the mutual friendship" do
+      @friendship1.destroy
+      assert !UserFriendship.exists?(@friendship2.id)
+    end
+  end
 
 end
