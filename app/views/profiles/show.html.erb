@@ -6,7 +6,7 @@
       <% if current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
         <%= link_to "Edit friendship", edit_user_friendship_path(friend_id: @user) %>
       <% else %>
-        <%= button_tag "Create friendship!", class: 'btn btn-primary', id: 'add-friendship', data: { friend_id: @user.to_param } %>
+        <%= link_to "Create friendship!", new_user_friendship_path(friend_id: @user), id: 'add-friendship', data: { friend_id: @user.to_param }, class: "btn btn-primary" %>
       <% end %>
     </div>
     <% end %>
