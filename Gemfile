@@ -11,6 +11,7 @@ gem 'devise', '~> 2.1.2'
 gem 'simple_form'
 gem 'state_machine', '~> 1.1.2'
 gem 'draper', '~> 0.18.0'
+gem 'js-routes', '~> 0.8.5'
 
 group :test do
     gem 'shoulda', '~> 3.1.1'
