@@ -1,6 +1,19 @@
 class UserFriendshipDecorator < Draper::Base
   decorates :user_friendship
 
+  def friendship_state
+    model.state.titleize
+  end
+
+  def sub_message
+    case model.state
+    when 'pending'
+      "Do you really want to be friends with #{model.friend.full_name}?"
+    when 'accepted'
+      "You are friends with #{model.friend.full_name}."
+    end
+  end
+
   # Accessing Helpers
   #   You can access any helper via a proxy
   #
