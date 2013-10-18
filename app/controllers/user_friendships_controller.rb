@@ -1,6 +1,8 @@
 class UserFriendshipsController < ApplicationController
   before_filter :authenticate_user!
 
+  respond_to :html, :json
+
   def index
     @user_friendships = current_user.user_friendships.all
   end
@@ -37,7 +39,7 @@ class UserFriendshipsController < ApplicationController
   end
 
   def edit
-    @user_friendship = current_user.user_friendships.find(params[:id])
+    @user_friendship = current_user.user_friendships.find(params[:id]).decorate
     @friend = @user_friendship.friend
   end
 
