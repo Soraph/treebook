@@ -2,13 +2,7 @@
  <h1>Viewing friendship</h1>
 </div>
 
-<% if @user_friendship.requested? %>
- <h3>Do you really want to be friends with <%= @friend.full_name %>?</h3>
-<% end %>
-
-<% if @user_friendship.accepted? %>
- <h3>You are friends with <%= @friend.full_name %></h3>
-<% end %>
+<h3><%= @user_friendship.sub_message %></h3>
 
 <% if @user_friendship.requested? %>
  <%= form_for @user_friendship, url: accept_user_friendship_path(@user_friendship), method: :put do |form| %>
