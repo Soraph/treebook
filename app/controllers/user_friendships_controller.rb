@@ -69,6 +69,16 @@ class UserFriendshipsController < ApplicationController
     redirect_to user_friendships_path
   end
 
+  def block
+    @user_friendship = current_user.user_friendships.find(params[:id])
+    if @user_friendship.block!
+      flash[:success] = "You have blocked #{@user_friendship.friend.full_name}."
+    else
+      flash[:error] = "That friendship could not be blocked."
+    end
+    redirect_to user_friendships_path
+  end
+
   private
   def friendship_association
     case params[:list]
