@@ -7,3 +7,8 @@
 one: 
   user: profiler
   friend: moreuser
+
+blocked_by_profiler:
+  user: profiler
+  friend: blocked_friend
+  state: 'blocked'
