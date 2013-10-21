@@ -14,6 +14,8 @@ class UserFriendshipsControllerTest < ActionController::TestCase
       setup do
         @friendship1 = create(:pending_user_friendship, user: users(:profiler), friend: create(:user, first_name: 'Pending', last_name: 'Friend'))
         @friendship2 = create(:accepted_user_friendship, user: users(:profiler), friend: create(:user, first_name: 'Active', last_name: 'Friend'))
+        @friendship3 = create(:requested_user_friendship, user: users(:profiler), friend: create(:user, first_name: 'Requested', last_name: 'Friend'))
+        @friendship4 = user_friendships(:blocked_by_profiler)
 
         sign_in users(:profiler)
         get :index
@@ -41,6 +43,82 @@ class UserFriendshipsControllerTest < ActionController::TestCase
       should "display date information on an accepted friendship" do
         assert_select "#user_friendship_#{@friendship2.id}" do
           assert_select "em", "Friendship started #{@friendship2.updated_at}."
+        end
+      end
+
+      context "blocked users" do
+        setup do
+          get :index, list: 'blocked'
+        end
+
+        should "get the index without error" do
+          assert_response :success
+        end
+
+        should "not display pending or active friend's name" do
+          assert_no_match /Pending\ Friend/, response.body
+          assert_no_match /Active\ Friend/, response.body
+        end
+
+        should "display blocked friend names" do
+          assert_match /Blocked\ Friend/, response.body
+        end
+      end
+
+      context "pending users" do
+        setup do
+          get :index, list: 'pending'
+        end
+
+        should "get the index without error" do
+          assert_response :success
+        end
+
+        should "not display blocked or active friend's name" do
+          assert_no_match /Blocked\ Friend/, response.body
+          assert_no_match /Active\ Friend/, response.body
+        end
+
+        should "display pending friend names" do
+          assert_match /Pending\ Friend/, response.body
+        end
+      end
+
+      context "requested users" do
+        setup do
+          get :index, list: 'requested'
+        end
+
+        should "get the index without error" do
+          assert_response :success
+        end
+
+        should "not display blocked or pending friend's name" do
+          assert_no_match /Blocked\ Friend/, response.body
+          assert_no_match /Pending\ Friend/, response.body
+        end
+
+        should "display requested friend names" do
+          assert_match /Requested\ Friend/, response.body
+        end
+      end
+
+      context "accepted users" do
+        setup do
+          get :index, list: 'accepted'
+        end
+
+        should "get the index without error" do
+          assert_response :success
+        end
+
+        should "not display blocked or requested friend's name" do
+          assert_no_match /Blocked\ Friend/, response.body
+          assert_no_match /Requested\ Friend/, response.body
+        end
+
+        should "display requested friend names" do
+          assert_match /Active/, response.body
         end
       end
 
