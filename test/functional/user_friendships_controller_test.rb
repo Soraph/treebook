@@ -283,6 +283,40 @@ class UserFriendshipsControllerTest < ActionController::TestCase
     end
   end
 
+  context "#ablock" do
+    context "when not logged in" do
+      should "redirect to the login page" do
+        put :block, id: 1
+        assert_response :redirect
+        assert_redirected_to login_path
+      end
+    end
+
+    context "when logged in" do
+      setup do
+        @friend = create(:user)
+        @user_friendship = create(:pending_user_friendship, user: users(:profiler), friend: @friend)
+        create(:pending_user_friendship, friend: users(:profiler), user: @friend)
+        sign_in users(:profiler)
+        put :block, id: @user_friendship
+        @user_friendship.reload
+      end
+
+      should "assign a user friendship" do
+        assert assigns(:user_friendship)
+        assert_equal @user_friendship, assigns(:user_friendship)
+      end
+
+      should "update the friendship to blocked" do
+        assert_equal 'blocked', @user_friendship.state
+      end
+
+      should "have a flash success message" do
+        assert_equal "You have blocked #{@user_friendship.friend.full_name}.", flash[:success]
+      end
+    end
+  end
+
   context "#edit" do
     context "when not logged in" do
       should "redirect to the login page" do
