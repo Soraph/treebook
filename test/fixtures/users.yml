@@ -24,3 +24,9 @@ moreuser:
   email: "moreuser@email.com"
   profile_name: "Moreuser"
   encrypted_password: "$2b$10$8fCZ9wGTsKiqb0aIgpssne4qtchcpqhepdU5WylZwh4GBAkgFWEYe"
+
+blocked_friend:
+  first_name: "Blocked"
+  last_name: "Friend"
+  email: "blocked@email.com"
+  profile_name: "blockedfriend"
