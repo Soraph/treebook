@@ -29,7 +29,7 @@ class UserFriendshipsControllerTest < ActionController::TestCase
         assert assigns(:user_friendships)
       end
 
-      should "display frriend's name" do
+      should "display friend's name" do
         assert_match /Pending/, response.body
         assert_match /Active/, response.body
       end
