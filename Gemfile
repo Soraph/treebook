@@ -10,7 +10,7 @@ gem 'rails', '~> 3.2.13'
 gem 'devise', '~> 2.1.2'
 gem 'simple_form'
 gem 'state_machine', '~> 1.1.2'
-gem 'draper', '~> 0.18.0'
+gem 'draper', '~> 1.0'
 gem 'js-routes', '~> 0.8.5'
 
 group :test do
