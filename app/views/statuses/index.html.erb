@@ -5,6 +5,7 @@
 <%= link_to 'Post a new Status', new_status_path, class: "someclass" %>
 
 <% @statuses.each do |status| %>
+ <% if can_display_status?(status) %>
 <div class="status well">
  <div class="row">
   <div class="col-md-1">
@@ -27,4 +28,5 @@
   </div>
  </div>
 </div>
+ <% end %>
 <% end %>
