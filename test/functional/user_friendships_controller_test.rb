@@ -283,7 +283,7 @@ class UserFriendshipsControllerTest < ActionController::TestCase
     end
   end
 
-  context "#ablock" do
+  context "#block" do
     context "when not logged in" do
       should "redirect to the login page" do
         put :block, id: 1
