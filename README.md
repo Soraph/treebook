@@ -9,6 +9,8 @@ Rails 3.2.15
 
 Kinda old!
 
+Planning to update dependencies to the latest version.
+
 ###On Heroku###
 
 Also available on Heroku:
