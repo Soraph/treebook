@@ -79,16 +79,16 @@ class StatusesController < ApplicationController
   # DELETE /statuses/1
   # DELETE /statuses/1.json
   def destroy
-    @status = Status.find(params[:id])
-    if @status.user == current_user
-      @status.destroy
-    else
-      flash[:error] = "This status doesn't belong to you!"
-    end
+    @status = current_user.statuses.find(params[:id])
 
     respond_to do |format|
-      format.html { redirect_to statuses_url }
-      format.json { head :no_content }
+      if @status.destroy
+        format.html { redirect_to statuses_url, notice: 'Status was successfully deleted.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "index" }
+        format.json { render json: @status.errors, status: :unprocessable_entity }
+      end
     end
   end
 end
