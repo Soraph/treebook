@@ -1,15 +1,11 @@
 Treebook [![Build status](https://travis-ci.org/Soraph/treebook.png)](https://travis-ci.org/Soraph/treebook) [![Dependency Status](https://gemnasium.com/Soraph/treebook.png)](https://gemnasium.com/Soraph/treebook)
 ========
 
-Development playground from the treehouse course.
+Development playground from the treehouse course (that I keep updating for exercise).
 
-Ruby 1.9.3p374
+Ruby 2.0.0p247
 
 Rails 3.2.15
-
-Kinda old!
-
-Planning to update dependencies to the latest version.
 
 ###On Heroku###
 
