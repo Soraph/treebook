@@ -12,6 +12,7 @@
      <%= link_to image_tag(status.user.gravatar_url), profile_page_path(status.user) %>
   </div>
   <div class="col-md-11">
+    <% if status.user == current_user %>
    <div class="btn-group pull-right">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
      <span class="glyphicon glyphicon-cog"></span> <span class="caret"></span>
@@ -22,6 +23,7 @@
      <li><%= link_to 'Delete', status, method: :delete, data: { confirm: 'Are you sure?' } %></li>
     </ul>
    </div>
+   <% end %>
    <strong><%= link_to status.user.full_name, profile_page_path(status.user) %></strong>
    <p><%= status.content %></p>
    <em><%= link_to time_ago_in_words(status.created_at) + " ago", status %></em>
