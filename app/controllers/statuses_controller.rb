@@ -80,7 +80,11 @@ class StatusesController < ApplicationController
   # DELETE /statuses/1.json
   def destroy
     @status = Status.find(params[:id])
-    @status.destroy
+    if @status.user == current_user
+      @status.destroy
+    else
+      flash[:error] = "This status doesn't belong to you!"
+    end
 
     respond_to do |format|
       format.html { redirect_to statuses_url }
