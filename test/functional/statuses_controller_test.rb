@@ -88,6 +88,13 @@ class StatusesControllerTest < ActionController::TestCase
     assert_redirected_to new_user_session_path
   end
 
+  test "should not update status if is not the owner" do
+    sign_in users(:newuser)
+    assert_raises(ActiveRecord::RecordNotFound) do
+      put :update, id: @status, status: { content: @status.content }
+    end
+  end
+
   test "should update status if logged in" do
     sign_in users(:profiler)
     put :update, id: @status, status: { content: @status.content }
@@ -117,10 +124,9 @@ class StatusesControllerTest < ActionController::TestCase
 
   test "should not destroy status if is not the owner" do
     sign_in users(:newuser)
-    delete :destroy, id: @status
-    assert_response :redirect
-    assert_redirected_to statuses_path
-    assert_equal "This status doesn't belong to you!", flash[:error]
+    assert_raises(ActiveRecord::RecordNotFound) do
+      delete :destroy, id: @status
+    end
   end
 
   test "should destroy status if logged in and is the owner" do
