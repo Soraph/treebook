@@ -140,17 +140,17 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  coffee-rails (~> 3.2.1)
-  devise (~> 2.0)
-  draper (~> 1.0)
-  factory_girl_rails (~> 4.1.0)
+  coffee-rails
+  devise
+  draper
+  factory_girl_rails
   jquery-rails
-  js-routes (~> 0.8.5)
+  js-routes
   pg
-  rails (~> 3.2.13)
-  sass-rails (~> 3.2.3)
-  shoulda (~> 3.1.1)
+  rails
+  sass-rails
+  shoulda
   simple_form
   sqlite3
-  state_machine (~> 1.1.2)
-  uglifier (>= 1.0.3)
+  state_machine
+  uglifier
