@@ -115,8 +115,17 @@ class StatusesControllerTest < ActionController::TestCase
     assert_redirected_to new_user_session_path
   end
 
-  test "should destroy status if logged in" do
+  test "should not destroy status if is not the owner" do
+    sign_in users(:newuser)
+    delete :destroy, id: @status
+    assert_response :redirect
+    assert_redirected_to statuses_path
+    assert_equal "This status doesn't belong to you!", flash[:error]
+  end
+
+  test "should destroy status if logged in and is the owner" do
     sign_in users(:profiler)
+    assert_equal @status.user, users(:profiler)
     assert_difference('Status.count', -1) do
       delete :destroy, id: @status
     end
