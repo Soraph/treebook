@@ -4,7 +4,8 @@ Treebook [![Build status](https://travis-ci.org/Soraph/treebook.png)](https://tr
 Development playground from the treehouse course.
 
 Ruby 1.9.3p374
-Rails 3.2.13
+
+Rails 3.2.15
 
 Kinda old!
 
