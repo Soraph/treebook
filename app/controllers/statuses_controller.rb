@@ -43,7 +43,7 @@ class StatusesController < ApplicationController
   # POST /statuses
   # POST /statuses.json
   def create
-    @status = current_user.statuses.new(params[:status])
+    @status = current_user.statuses.new(status_params)
 
     respond_to do |format|
       if @status.save
@@ -66,7 +66,7 @@ class StatusesController < ApplicationController
     end
 
     respond_to do |format|
-      if @status.update_attributes(params[:status])
+      if @status.update_attributes(status_params)
         format.html { redirect_to @status, notice: 'Status was successfully updated.' }
         format.json { head :no_content }
       else
@@ -90,5 +90,10 @@ class StatusesController < ApplicationController
         format.json { render json: @status.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  private
+  def status_params
+    params.require(:status).permit(:content, :user_id)
   end
 end

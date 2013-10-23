@@ -4,7 +4,7 @@ class UserFriendshipsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @user_friendships = UserFriendshipDecorator.decorate_collection(friendship_association.all)
+    @user_friendships = UserFriendshipDecorator.decorate_collection(friendship_association.load)
     respond_with @user_friendships
   end
 
@@ -22,6 +22,7 @@ class UserFriendshipsController < ApplicationController
   end
 
   def create
+
     if params[:user_friendship] && params[:user_friendship].has_key?(:friend_id)
       @friend = User.where(profile_name: params[:user_friendship][:friend_id]).first
       @user_friendship = UserFriendship.request(current_user, @friend)
@@ -93,6 +94,11 @@ class UserFriendshipsController < ApplicationController
     when 'accepted'
       current_user.accepted_user_friendships
     end
+  end
+
+  private
+  def user_friendship_attributes
+    params.require(:user_friendship).permit(:user, :friend, :user_id, :friend_id, :state)
   end
 
 end

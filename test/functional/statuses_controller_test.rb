@@ -25,7 +25,7 @@ class StatusesControllerTest < ActionController::TestCase
     users(:profiler).statuses.create(content: 'Non-blocked status')
     get :index
     assert_match /Non\-blocked\ status/, response.body
-    assert_not_match /Blocked\ status/, response.body
+    assert_no_match /Blocked\ status/, response.body
   end
 
   test "should be redirected when not logged in" do
@@ -110,7 +110,7 @@ class StatusesControllerTest < ActionController::TestCase
 
   test "should not update the status if nothing has changed" do
     sign_in users(:profiler)
-    put :update, id: @status
+    put :update, id: @status, status: { content: @status.content, user_id: users(:profiler).id }
     assert_redirected_to status_path(assigns(:status))
     assert_equal assigns(:status).user_id, users(:profiler).id
   end
