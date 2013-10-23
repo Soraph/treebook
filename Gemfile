@@ -27,6 +27,9 @@ group :production do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
+
+  #For Heroku
+  gem 'rails_12factor'
 end
 
 gem 'jquery-rails'
