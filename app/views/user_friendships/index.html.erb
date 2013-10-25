@@ -30,16 +30,7 @@
       <div class="row">
         <div class="col-md-1"><%= link_to image_tag(friend.gravatar_url), profile_page_path(friend) %></div>
           <div class="col-md-11">
-            <% case friendship.state %>
-            <% when 'pending' %>
-              <em>Friendship is pending.</em>
-            <% when 'requested' %>
-              <em>Friendship requested.</em>
-            <% when 'accepted' %>
-              <em>Friendship started <%= friendship.updated_at %>.</em>
-            <% when 'blocked' %>
-              <em>Blocked on <%= friendship.updated_at %></em><br />
-            <% end %>
+            <em><%= friendship.state_to_message %></em>
           </div>
         </div>
     </div>
