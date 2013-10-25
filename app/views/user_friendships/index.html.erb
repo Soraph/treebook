@@ -3,34 +3,48 @@
 </div>
 
 <div>
-  <strong>Friend list:</strong><br />
-  <%= link_to 'Blocked', user_friendships_path(list: 'blocked') %>
-  <%= link_to 'Pending', user_friendships_path(list: 'pending') %>
-  <%= link_to 'Accepted', user_friendships_path(list: 'accepted') %>
-  <%= link_to 'Requested', user_friendships_path(list: 'requested') %>
+  <strong>Filter friends by:</strong>
+  <div class="btn-group">
+    <% if params[:list] %>
+     <%= link_to 'Undo', user_friendships_path, class: 'btn btn-info' %>
+    <% end %>
+    <%= link_to 'Blocked', user_friendships_path(list: 'blocked'), class: 'btn btn-default' %>
+    <%= link_to 'Pending', user_friendships_path(list: 'pending'), class: 'btn btn-default' %>
+    <%= link_to 'Accepted', user_friendships_path(list: 'accepted'), class: 'btn btn-default' %>
+    <%= link_to 'Requested', user_friendships_path(list: 'requested'), class: 'btn btn-default' %>
+  </div>
 </div>
-
+<hr />
 <% if @user_friendships.empty? %>
-<em>No friends yet!</em>
+<em>No <%= params[:list] %> friends yet!</em>
 <% end %>
 
 <% @user_friendships.each do |friendship| %>
  <% friend = friendship.friend %>
- <div id="<%= dom_id(friendship) %>" class="friend well row">
-    <div class="col-md-1">
-     <%= link_to image_tag(friend.gravatar_url), profile_page_path(friend) %>
+ <div id="<%= dom_id(friendship) %>" class="friend panel panel-<%= friendship.state_to_css %>">
+    <div class="panel-heading">
+      <span class="pull-right label label-<%= friendship.state_to_css %>"><%= friendship.state.upcase %></span>
+      <h3 class="panel-title"><%= friend.full_name %></h3>
     </div>
-    <div class="col-md-11">
-      <strong><%= friend.full_name %></strong><br />
-      <% if friendship.pending? %>
-        <em>Friendship is pending.</em> <%= link_to "Delete request", edit_user_friendship_path(friendship.friend.profile_name), class: 'btn btn-danger' %>
-      <% end %>
-      <% if friendship.requested? %>
-        <em>Friendship requested.</em> <%= link_to "Accept request", edit_user_friendship_path(friendship.friend.profile_name), class: 'btn btn-success' %>
-      <% end %>
-      <% if friendship.accepted? %>
-        <em>Friendship started <%= friendship.updated_at %>.</em> <%= link_to "Update friendship", edit_user_friendship_path(friendship.friend.profile_name), class: 'btn btn-info' %>
-      <% end %>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-1"><%= link_to image_tag(friend.gravatar_url), profile_page_path(friend) %></div>
+          <div class="col-md-11">
+            <% case friendship.state %>
+            <% when 'pending' %>
+              <em>Friendship is pending.</em>
+            <% when 'requested' %>
+              <em>Friendship requested.</em>
+            <% when 'accepted' %>
+              <em>Friendship started <%= friendship.updated_at %>.</em>
+            <% when 'blocked' %>
+              <em>Blocked on <%= friendship.updated_at %></em><br />
+            <% end %>
+          </div>
+        </div>
+    </div>
+    <div class="panel-footer clearfix">
+        <%= link_to "Update friendship", edit_user_friendship_path(friendship.friend.profile_name), class: 'btn btn-primary pull-right' %>
     </div>
  </div>
 <% end %>
