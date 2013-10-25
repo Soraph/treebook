@@ -15,6 +15,19 @@ class UserFriendshipDecorator < Draper::Decorator
     end
   end
 
+  def state_to_css
+    case model.state
+    when 'pending'
+      "info"
+    when 'requested'
+      "primary"
+    when 'accepted'
+      "success"
+    when 'blocked'
+      "danger"
+    end
+  end
+
   # Accessing Helpers
   #   You can access any helper via a proxy
   #
