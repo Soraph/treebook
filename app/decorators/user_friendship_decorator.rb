@@ -28,6 +28,19 @@ class UserFriendshipDecorator < Draper::Decorator
     end
   end
 
+  def state_to_message
+    case model.state
+    when 'pending'
+      "Friendship is pending."
+    when 'requested'
+      "Friendship requested."
+    when 'accepted'
+      "Friendship started #{model.updated_at}."
+    when 'blocked'
+      "Blocked on #{model.updated_at}."
+    end
+  end
+
   # Accessing Helpers
   #   You can access any helper via a proxy
   #
