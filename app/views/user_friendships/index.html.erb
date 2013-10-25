@@ -23,7 +23,7 @@
  <% friend = friendship.friend %>
  <div id="<%= dom_id(friendship) %>" class="friend panel panel-<%= friendship.state_to_css %>">
     <div class="panel-heading">
-      <span class="pull-right label label-<%= friendship.state_to_css %>"><%= friendship.state.upcase %></span>
+      <span class="pull-right label label-<%= friendship.state_to_css %>"><%= "#{friendship.state}".upcase %></span>
       <h3 class="panel-title"><%= friend.full_name %></h3>
     </div>
     <div class="panel-body">
