@@ -60,6 +60,7 @@ GEM
       thor (>= 0.14, < 2.0)
     js-routes (0.9.4)
       rails (>= 3.2)
+    json (1.8.1)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -125,9 +126,9 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.38)
-    uglifier (2.2.1)
+    uglifier (2.3.0)
       execjs (>= 0.3.0)
-      multi_json (~> 1.0, >= 1.0.2)
+      json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
 
