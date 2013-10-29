@@ -33,9 +33,14 @@ class BoostrapFormBuilder < ActionView::Helpers::FormBuilder
   def standard_html(type, method, options = {})
     options[:class] ||= ""
     options[:label] ||= "#{method.to_s}".humanize
+    field_errors = object.errors[method].join(', ') if !@object.errors[method].blank?
+
     content_tag :div, class: "form-group #{ 'has-error' unless @object.errors[method].blank?}" do
-      label_tag("#{object_name}[#{method}]", "#{options[:label]}", :class => "control-label") +
-      @template.send(type+'_tag', "#{object_name}[#{method}]", nil, :class => "form-control #{options[:class]}")
+      content = label_tag("#{object_name}[#{method}]", "#{options[:label]}", :class => "control-label")
+      content << @template.send(type+'_tag', "#{object_name}[#{method}]", nil, :class => "form-control #{options[:class]}")
+      content << (content_tag(:span, field_errors.humanize, class: 'help-block')) if field_errors
+
+      content.html_safe
     end
   end
 
