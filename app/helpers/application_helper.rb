@@ -25,29 +25,24 @@ end
 
 class BoostrapFormBuilder < ActionView::Helpers::FormBuilder
 
-  def prepare_options(method, options)
-    options[:class] ||= ""
-    options[:label] ||= "#{method.to_s}".humanize
-    options
-  end
+  FORM_HELPERS = %w{text_field password_field email_field}
+
+  delegate :content_tag, to: :@template
+  delegate :label_tag, to: :@template
 
   def standard_html(type, method, options = {})
-    prepare_options(method, options)
-    @template.content_tag :div, class: "form-group #{ 'has-error' unless @object.errors[method].blank?}" do
-      @template.label_tag("#{object_name}[#{method}]", "#{options[:label]}", :class => "control-label") +
-        @template.send(type+'_tag', "#{object_name}[#{method}]", nil, :class => "form-control #{options[:class]}")
+    options[:class] ||= ""
+    options[:label] ||= "#{method.to_s}".humanize
+    content_tag :div, class: "form-group #{ 'has-error' unless @object.errors[method].blank?}" do
+      label_tag("#{object_name}[#{method}]", "#{options[:label]}", :class => "control-label") +
+      @template.send(type+'_tag', "#{object_name}[#{method}]", nil, :class => "form-control #{options[:class]}")
     end
   end
 
-  def text_field(method, options = {})
-    standard_html("#{__method__.to_s}", method, options)
-  end
-
-  def email_field(method, options = {})
-    standard_html("#{__method__.to_s}", method, options)
-  end
-
-  def password_field(method, options = {})
-    standard_html("#{__method__.to_s}", method, options)
+  FORM_HELPERS.each do |method_name|
+    define_method(method_name) do |method, *args|
+      options = args.extract_options!.symbolize_keys!
+      standard_html("#{__method__.to_s}", method, options)
+    end
   end
 end
