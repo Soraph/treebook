@@ -35,26 +35,19 @@ class BoostrapFormBuilder < ActionView::Helpers::FormBuilder
     prepare_options(method, options)
     @template.content_tag :div, class: "form-group #{ 'has-error' unless @object.errors[method].blank?}" do
       @template.label_tag("#{object_name}[#{method}]", "#{options[:label]}", :class => "control-label") +
-      case type
-      when 'text'
-        @template.text_field_tag("#{object_name}[#{method}]", nil, :class => "form-control #{options[:class]}")
-      when 'email'
-        @template.email_field_tag("#{object_name}[#{method}]", nil, :class => "form-control #{options[:class]}") 
-      when 'password'
-        @template.password_field_tag("#{object_name}[#{method}]", nil, :class => "form-control #{options[:class]}")
-      end
+        @template.send(type+'_tag', "#{object_name}[#{method}]", nil, :class => "form-control #{options[:class]}")
     end
   end
 
   def text_field(method, options = {})
-    standard_html('text', method, options)
+    standard_html("#{__method__.to_s}", method, options)
   end
 
   def email_field(method, options = {})
-    standard_html('email', method, options)
+    standard_html("#{__method__.to_s}", method, options)
   end
 
   def password_field(method, options = {})
-    standard_html('password', method, options)
+    standard_html("#{__method__.to_s}", method, options)
   end
 end
