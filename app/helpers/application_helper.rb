@@ -24,33 +24,37 @@ module ApplicationHelper
 end
 
 class BoostrapFormBuilder < ActionView::Helpers::FormBuilder
-  def text_field(method, options = {})
+
+  def prepare_options(method, options)
     options[:class] ||= ""
     options[:label] ||= "#{method.to_s}".humanize
+    options
+  end
 
+  def standard_html(type, method, options = {})
+    prepare_options(method, options)
     @template.content_tag :div, class: "form-group #{ 'has-error' unless @object.errors[method].blank?}" do
       @template.label_tag("#{object_name}[#{method}]", "#{options[:label]}", :class => "control-label") +
-      @template.text_field_tag("#{object_name}[#{method}]", nil, :class => "form-control #{options[:class]}") 
+      case type
+      when 'text'
+        @template.text_field_tag("#{object_name}[#{method}]", nil, :class => "form-control #{options[:class]}")
+      when 'email'
+        @template.email_field_tag("#{object_name}[#{method}]", nil, :class => "form-control #{options[:class]}") 
+      when 'password'
+        @template.password_field_tag("#{object_name}[#{method}]", nil, :class => "form-control #{options[:class]}")
+      end
     end
+  end
+
+  def text_field(method, options = {})
+    standard_html('text', method, options)
   end
 
   def email_field(method, options = {})
-    options[:class] ||= ""
-    options[:label] ||= "#{method.to_s}".humanize
-
-    @template.content_tag :div, class: "form-group #{ 'has-error' unless @object.errors[method].blank?}" do
-      @template.label_tag("#{object_name}[#{method}]", "#{options[:label]}", :class => "control-label") +
-      @template.email_field_tag("#{object_name}[#{method}]", nil, :class => "form-control #{options[:class]}") 
-    end
+    standard_html('email', method, options)
   end
 
   def password_field(method, options = {})
-    options[:class] ||= ""
-    options[:label] ||= "#{method.to_s}".humanize
-
-    @template.content_tag :div, class: "form-group #{ 'has-error' unless @object.errors[method].blank?}" do
-      @template.label_tag("#{object_name}[#{method}]", "#{options[:label]}", :class => "control-label") +
-      @template.password_field_tag("#{object_name}[#{method}]", nil, :class => "form-control #{options[:class]}") 
-    end
+    standard_html('password', method, options)
   end
 end
