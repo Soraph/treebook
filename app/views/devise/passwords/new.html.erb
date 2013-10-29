@@ -1,12 +1,12 @@
-<h2>Forgot your password?</h2>
-
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.submit "Send me reset password instructions" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<div class="row">
+  <div class="col-md-4">
+  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => "well"}, :builder => BoostrapFormBuilder ) do |f| %>
+  <fieldset>
+    <legend>Forgot your password?</legend>
+    <%= f.email_field :email %>
+    <%= button_tag "Send me reset password instructions" %>
+  </fieldset>
+  <% end %>
+  <%= render "devise/shared/links" %>
+  </div>
+</div>
