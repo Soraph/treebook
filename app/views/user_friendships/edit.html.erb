@@ -17,16 +17,16 @@
 <h3><%= @user_friendship.sub_message %></h3>
 
 <% if @user_friendship.requested? %>
- <%= form_for @user_friendship, url: accept_user_friendship_path(@user_friendship), method: :put do |form| %>
-  <%= form.hidden_field :friend_id, value: @friend.profile_name %>
-  <%= submit_tag "Accept friendship", class: 'btn btn-primary' %>
+ <%= form_for @user_friendship, url: accept_user_friendship_path(@user_friendship), method: :put, html: { class: 'pull-left' }  do |form| %>
+    <%= form.hidden_field :friend_id, value: @friend.profile_name %>
+    <%= submit_tag "Accept friendship", class: 'btn btn-primary' %>
  <% end %>
 <% end %>
-<%= form_for @user_friendship, url: block_user_friendship_path(@user_friendship), method: :put do |form| %>
-<%= form.hidden_field :friend_id, value: @friend.profile_name %>
-  <%= submit_tag "Block Friendship", class: 'btn btn-warning' %>
+<%= form_for @user_friendship, url: block_user_friendship_path(@user_friendship), method: :put, html: { class: 'pull-left' }  do |form| %>
+    <%= form.hidden_field :friend_id, value: @friend.profile_name %>
+    <%= submit_tag "Block Friendship", class: 'btn btn-warning' %>
 <% end %>
-<%= form_for @user_friendship, url: user_friendship_path(@user_friendship), method: :delete do |form| %>
-  <%= form.hidden_field :friend_id, value: @friend.profile_name %>
-  <%= submit_tag "Delete friendship", class: 'btn btn-danger' %>
+<%= form_for @user_friendship, url: user_friendship_path(@user_friendship), method: :delete, html: { class: 'pull-left' } do |form| %>
+    <%= form.hidden_field :friend_id, value: @friend.profile_name %>
+    <%= submit_tag "Delete friendship", class: 'btn btn-danger' %>
 <% end %>
