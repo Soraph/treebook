@@ -1,4 +1,4 @@
-Treebook [![Build status](https://travis-ci.org/Soraph/treebook.png)](https://travis-ci.org/Soraph/treebook) [![Dependency Status](https://gemnasium.com/Soraph/treebook.png)](https://gemnasium.com/Soraph/treebook)
+Treebook [![Build status](https://travis-ci.org/Soraph/treebook.png)](https://travis-ci.org/Soraph/treebook) [![Dependency Status](https://gemnasium.com/Soraph/treebook.png)](https://gemnasium.com/Soraph/treebook) [![Code Climate](https://codeclimate.com/github/Soraph/treebook.png)](https://codeclimate.com/github/Soraph/treebook)
 ========
 
 Development playground from the treehouse course (that I keep updating for exercise).
