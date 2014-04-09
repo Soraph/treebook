@@ -1,26 +1,34 @@
+GIT
+  remote: git://github.com/plataformatec/simple_form.git
+  revision: 9158043eabe5bb70fb055e9d9baef8ede0ba9115
+  specs:
+    simple_form (3.0.1)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
-    actionmailer (4.0.4)
-      actionpack (= 4.0.4)
-      mail (~> 2.5.4)
-    actionpack (4.0.4)
-      activesupport (= 4.0.4)
+    actionmailer (4.0.0)
+      actionpack (= 4.0.0)
+      mail (~> 2.5.3)
+    actionpack (4.0.0)
+      activesupport (= 4.0.0)
       builder (~> 3.1.0)
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
-    activemodel (4.0.4)
-      activesupport (= 4.0.4)
+    activemodel (4.0.0)
+      activesupport (= 4.0.0)
       builder (~> 3.1.0)
-    activerecord (4.0.4)
-      activemodel (= 4.0.4)
+    activerecord (4.0.0)
+      activemodel (= 4.0.0)
       activerecord-deprecated_finders (~> 1.0.2)
-      activesupport (= 4.0.4)
+      activesupport (= 4.0.0)
       arel (~> 4.0.0)
     activerecord-deprecated_finders (1.0.3)
-    activesupport (4.0.4)
-      i18n (~> 0.6, >= 0.6.9)
+    activesupport (4.0.0)
+      i18n (~> 0.6, >= 0.6.4)
       minitest (~> 4.2)
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
@@ -74,46 +82,45 @@ GEM
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
-    rails (0.9.5)
-      actionmailer (>= 0.6.1)
-      actionpack (>= 1.4.0)
-      activerecord (>= 1.6.0)
-      rake (>= 0.4.15)
+    rails (4.0.0)
+      actionmailer (= 4.0.0)
+      actionpack (= 4.0.0)
+      activerecord (= 4.0.0)
+      activesupport (= 4.0.0)
+      bundler (>= 1.3.0, < 2.0)
+      railties (= 4.0.0)
+      sprockets-rails (~> 2.0.0)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
     rails_serve_static_assets (0.0.2)
     rails_stdout_logging (0.0.3)
-    railties (4.0.4)
-      actionpack (= 4.0.4)
-      activesupport (= 4.0.4)
+    railties (4.0.0)
+      actionpack (= 4.0.0)
+      activesupport (= 4.0.0)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.2.2)
     request_store (1.0.5)
-    sass (3.2.19)
-    sass-rails (4.0.3)
+    sass (3.3.4)
+    sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
-      sass (~> 3.2.0)
-      sprockets (~> 2.8, <= 2.11.0)
-      sprockets-rails (~> 2.0)
+      sass (>= 3.1.10)
+      sprockets-rails (~> 2.0.0)
     shoulda (3.5.0)
       shoulda-context (~> 1.0, >= 1.0.1)
       shoulda-matchers (>= 1.4.1, < 3.0)
     shoulda-context (1.2.1)
     shoulda-matchers (2.5.0)
       activesupport (>= 3.0.0)
-    simple_form (3.0.1)
-      actionpack (>= 4.0.0, < 4.1)
-      activemodel (>= 4.0.0, < 4.1)
-    sprockets (2.11.0)
+    sprockets (2.12.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.1.0)
-      actionpack (>= 4.0)
-      activesupport (>= 4.0)
+    sprockets-rails (2.0.1)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
       sprockets (~> 2.8)
     sqlite3 (1.3.9)
     state_machine (1.2.0)
@@ -140,12 +147,13 @@ DEPENDENCIES
   factory_girl_rails
   jquery-rails
   js-routes
+  minitest
   pg
-  rails
+  rails (= 4.0.0)
   rails_12factor
   sass-rails
   shoulda
-  simple_form
+  simple_form!
   sqlite3
   state_machine
   uglifier

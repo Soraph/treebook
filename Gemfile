@@ -2,18 +2,19 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
-gem 'rails'
+gem 'rails', "4.0.0"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'devise'
-gem 'simple_form'
+gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 gem 'state_machine'
 gem 'draper'
 gem 'js-routes'
 
 group :test do
+    gem 'minitest'
     gem 'shoulda'
     gem 'factory_girl_rails'
 end
