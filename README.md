@@ -5,7 +5,7 @@ Development playground from the treehouse course (that I keep updating for exerc
 
 Ruby 2.0.0p247
 
-Rails 4.0.0
+Rails 4.1.0
 
 ###On Heroku###
 
