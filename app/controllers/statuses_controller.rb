@@ -50,8 +50,7 @@ class StatusesController < ApplicationController
         format.html { redirect_to @status, notice: 'Status was successfully created.' }
         format.json { render json: @status, status: :created, location: @status }
       else
-        format.html { render action: "new" }
-        format.json { render json: @status.errors, status: :unprocessable_entity }
+        format_generic_error("new")
       end
     end
   end
@@ -70,8 +69,7 @@ class StatusesController < ApplicationController
         format.html { redirect_to @status, notice: 'Status was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @status.errors, status: :unprocessable_entity }
+        format_generic_error("edit")
       end
     end
   end
@@ -86,8 +84,7 @@ class StatusesController < ApplicationController
         format.html { redirect_to statuses_url, notice: 'Status was successfully deleted.' }
         format.json { head :no_content }
       else
-        format.html { render action: "index" }
-        format.json { render json: @status.errors, status: :unprocessable_entity }
+        format_generic_error("index")
       end
     end
   end
@@ -95,5 +92,10 @@ class StatusesController < ApplicationController
   private
   def status_params
     params.require(:status).permit(:content, :user_id)
+  end
+
+  def format_generic_error(type)
+    format.html { render action: type }
+    format.json { render json: @status.errors, status: :unprocessable_entity }
   end
 end
