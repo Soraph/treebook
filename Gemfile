@@ -14,9 +14,10 @@ gem 'draper'
 gem 'js-routes'
 
 group :test do
-    gem 'minitest'
-    gem 'shoulda'
-    gem 'factory_girl_rails'
+  gem 'minitest'
+  gem 'shoulda'
+  gem 'factory_girl_rails'
+  gem 'codeclimate-test-reporter', require: nil
 end
 
 group :development, :test do
