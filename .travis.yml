@@ -11,7 +11,3 @@ script:
 before_script:
   - psql -c 'create database treebook_test' -U postgres
 bundler_args: --binstubs=./bundler_stubs
-addons:
-  code_climate:
-    repo_token:
-      secure: "YexDVhPLUoNHKg4G6N2Bsv78SmVpPgfT7xQfBc4imbzsNXyfl5QS+iEGmNW12VeS68IVZrMR9y1hlF9ydYVCSGVDzkXJOeoE8/Ioi8CRW0PtAoh4qSkjjwadC0e2aiBUpE0ZKwLs6OqQU3cu5asVt2OA2OgtPooVcaGaJFiGODI="
