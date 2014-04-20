@@ -14,9 +14,9 @@ gem 'draper'
 gem 'js-routes'
 
 group :test do
-    gem 'minitest'
-    gem 'shoulda'
-    gem 'factory_girl_rails'
+  gem 'minitest'
+  gem 'shoulda'
+  gem 'factory_girl_rails'
 end
 
 group :development, :test do
@@ -34,6 +34,7 @@ group :production do
 end
 
 gem 'jquery-rails'
+gem 'coveralls', require: false
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby'
